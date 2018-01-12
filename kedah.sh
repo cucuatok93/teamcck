@@ -21,14 +21,14 @@ cd
 
 echo ""
 echo -e "\e[38;5;6m     ========================================================="
-echo -e "\e[38;5;82m     *                 AUTOSCRIPT VPS ®2018                  *"
+echo -e "\e[38;5;82m     *                 AUTOSCRIPT VPS 2018                   *"
 echo -e "\e[38;5;6m     ========================================================="
 echo -e "\e[38;5;6m     *                     Contact Me                        *"
 echo -e "\e[38;5;6m     *                Channel: CuCuAtoK_TeaM                 *"
 echo -e "\e[38;5;6m     *                Whatsapp: -                            *"
 echo -e "\e[38;5;6m     *                Telegram: @Cucu_atok                   *"
 echo -e "\e[38;5;6m     ========================================================="
-echo -e "\e[38;5;6m     *                AUTOSCRIPT VPS ®2018                   *"
+echo -e "\e[38;5;6m     *                AUTOSCRIPT VPS 2018                    *"
 echo -e "\e[38;5;6m     ========================================================="
 # check registered ip
 wget -q -O IP "https://raw.githubusercontent.com/cucuatok93/teamcck/master/IP.txt"
