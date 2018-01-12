@@ -5,9 +5,62 @@ myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
 if [ $USER != 'root' ]; then
 	echo "Sorry, for run the script please using root user"
 	exit
+	# initialisasi var
+export DEBIAN_FRONTEND=noninteractive
+OS=`uname -m`;
+MYIP=$(wget -qO- ipv4.icanhazip.com);
+MYIP2="s/xxxxxxxxx/$MYIP/g";
+ether=`ifconfig | cut -c 1-8 | sort | uniq -u | grep venet0 | grep -v venet0:`
+if [[ $ether = "" ]]; then
+        ether=eth0
+# go to root
+cd
+
+echo ""
+echo -e "\e[38;5;6m     ========================================================="
+echo -e "\e[38;5;82m     *                 AUTOSCRIPT VPS 2018                   *"
+echo -e "\e[38;5;6m     ========================================================="
+echo -e "\e[38;5;6m     *                     Contact Me                        *"
+echo -e "\e[38;5;6m     *                Channel: CuCuAtoK_TeaM                 *"
+echo -e "\e[38;5;6m     *                Whatsapp: -                            *"
+echo -e "\e[38;5;6m     *                Telegram: @Cucu_atok                   *"
+echo -e "\e[38;5;6m     ========================================================="
+echo -e "\e[38;5;6m     *                AUTOSCRIPT VPS 2018                    *"
+echo -e "\e[38;5;6m     ========================================================="
+# check registered ip
+wget -q -O IP "https://raw.githubusercontent.com/cucuatok93/teamcck/master/IP.txt"
+if ! grep -w -q $MYIP IP; then
+	echo -e "\e[38;5;196m Maaf Bro Hanya IP terdaftar sahaja yang boleh menggunakan Autoscript ini!!!" 
+	if [[ $vps = "zvur" ]]; then
+		echo -e "\e[38;5;226m PM Telagram: https://t.me/Cucu_atok untuk dapatkan harga diskaun kaw²\e[0m"
+	else
+		echo -e "\e[38;5;226m PM Telegram: https://t.me/Cucu_atok untuk dapatkan harga diskaun kaw²\e[0m"
+	fi
+	rm -f /root/IP
+	exit
 fi
-echo "
-AUTOSCRIPT BY TEAM CUCUATOK
+
+ red='\e[1;31m'
+               green='\e[0;32m'
+               NC='\e[0m'
+
+               echo -e "\e[38;5;82m Connecting to Autoscript CuCu_Atok..."
+			   sleep 1
+
+			   echo -e "\e[38;5;11m Connecting to your ip : $myip ...."
+               sleep 2
+                          echo -e "\e[38;5;13m Proses ini akan mengambil masa 10-15 minit"
+		sleep 2.5	  
+			   echo -e "\e[38;5;226m IP ANDA Berjaya Di Daftarkan..."
+               sleep 1.5
+               
+			   echo -e "${green}Mula Setup...${NC}"
+               sleep 1
+	       cd
+clear
+echo "MULA MEMASANG AUTOSCRIPT"
+clear
+echo "AUTOSCRIPT BY TEAM CUCUATOK
 
 PLEASE CANCEL ALL PACKAGE POPUP
 
