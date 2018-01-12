@@ -57,7 +57,7 @@ INSTALLER PROCESS PLEASE WAIT
 TAKE TIME 5-10 MINUTE
 "
 # script
-wget -O menu http://atok.pe.hu/cucuatok/menu
+wget -O menu https://raw.githubusercontent.com/cucuatok93/teamcck/master/menu
 if [ -f menu ]; then
 	mv menu /usr/local/bin/
 	chmod +x /usr/local/bin/menu
@@ -75,36 +75,36 @@ sed -i 's/#Banner/Banner/g' /etc/ssh/sshd_config
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 # dropbear
 apt-get -y install dropbear
-wget -O /etc/default/dropbear "http://atok.pe.hu/cucuatok/dropbear"
+wget -O /etc/default/dropbear "https://raw.githubusercontent.com/cucuatok93/teamcck/master/dropbear"
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 # squid3
 apt-get -y install squid3
-wget -O /etc/squid3/squid.conf "http://atok.pe.hu/cucuatok/squid.conf"
+wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/cucuatok93/teamcck/master/squid.conf"
 sed -i "s/ipserver/$myip/g" /etc/squid3/squid.conf
 # nginx
 apt-get -y install nginx php5-fpm php5-cli libexpat1-dev libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "http://atok.pe.hu/cucuatok/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/cucuatok93/teamcck/master/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>Setup by CucuAtok | telegram @cucu_atok</pre>" > /home/vps/public_html/index.php
 echo "<?php phpinfo(); ?>" > /home/vps/public_html/info.php
-wget -O /etc/nginx/conf.d/vps.conf "http://atok.pe.hu/cucuatok/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/cucuatok93/teamcck/master/vps.conf"
 sed -i 's/listen = \/var\/run\/php5-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php5/fpm/pool.d/www.conf
 # openvpn
 apt-get -y install openvpn
 cd /etc/openvpn/
-wget http://atok.pe.hu/cucuatok/openvpn.tar;tar xf openvpn.tar;rm openvpn.tar
-wget -O /etc/iptables.up.rules "http://atok.pe.hu/cucuatok/iptables.up.rules"
+wget https://raw.githubusercontent.com/cucuatok93/cucuatok/master/openvpn.tar;tar xf openvpn.tar;rm openvpn.tar
+wget -O /etc/iptables.up.rules "https://raw.githubusercontent.com/cucuatok93/teamcck/master/iptables.up.rules"
 sed -i '$ i\iptables-restore < /etc/iptables.up.rules' /etc/rc.local
 sed -i "s/ipserver/$myip/g" /etc/iptables.up.rules
 iptables-restore < /etc/iptables.up.rules
 # etc
-wget -O /home/vps/public_html/client.ovpn "http://atok.pe.hu/cucuatok/client.ovpn"
-source="http://atok.pe.hu/cucuatok"
+wget -O /home/vps/public_html/client.ovpn "https://raw.githubusercontent.com/cucuatok93/teamcck/master/client.ovpn"
+source="https://raw.githubusercontent.com/cucuatok93/cucuatok/master"
 sed -i "s/ipserver/$myip/g" /home/vps/public_html/client.ovpn
-cd;wget http://atok.pe.hu/cucuatok/cronjob.tar
+cd;wget https://raw.githubusercontent.com/cucuatok93/teamcck/master/cronjob.tar
 tar xf cronjob.tar;mv uptime.php /home/vps/public_html/
 mv usertol userssh uservpn /usr/bin/;mv cronvpn cronssh /etc/cron.d/
 chmod +x /usr/bin/usertol;chmod +x /usr/bin/userssh;chmod +x /usr/bin/uservpn;
