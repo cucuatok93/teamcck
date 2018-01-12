@@ -60,7 +60,6 @@ fi
 			   echo -e "${green}Mula Setup...${NC}"
                sleep 1
 	       cd
-fi
 echo "
 AUTOSCRIPT BY TEAM CUCUATOK
 
