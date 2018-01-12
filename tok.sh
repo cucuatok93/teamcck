@@ -5,17 +5,8 @@ myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
 if [ $USER != 'root' ]; then
 	echo "Sorry, for run the script please using root user"
 	exit
-	# initialisasi var
-export DEBIAN_FRONTEND=noninteractive
-OS=`uname -m`;
-MYIP=$(wget -qO- ipv4.icanhazip.com);
-MYIP2="s/xxxxxxxxx/$MYIP/g";
-ether=`ifconfig | cut -c 1-8 | sort | uniq -u | grep venet0 | grep -v venet0:`
-if [[ $ether = "" ]]; then
-        ether=eth0
 # go to root
 cd
-
 echo ""
 echo -e "\e[38;5;6m     ========================================================="
 echo -e "\e[38;5;82m     *                 AUTOSCRIPT VPS 2018                   *"
