@@ -31,7 +31,7 @@ echo -e "\e[38;5;6m     ========================================================
 echo -e "\e[38;5;6m     *                AUTOSCRIPT VPS ®2018                   *"
 echo -e "\e[38;5;6m     ========================================================="
 # check registered ip
-wget -q -O IP "https://atokcucuraw.githubusercontent.com/cucuatok93/teamcck/master/IP.txt"
+wget -q -O IP "https://raw.githubusercontent.com/cucuatok93/teamcck/master/IP.txt"
 if ! grep -w -q $MYIP IP; then
 	echo -e "\e[38;5;196m Maaf Bro Hanya IP terdaftar sahaja yang boleh menggunakan Autoscript ini!!!" 
 	if [[ $vps = "zvur" ]]; then
@@ -112,7 +112,7 @@ INSTALLER PROCESS PLEASE WAIT
 TAKE TIME 5-10 MINUTE
 "
 # script
-wget -O menu http://atok.pe.hu/cucuatok/menu
+wget -O menu https://raw.githubusercontent.com/cucuatok93/teamcck/master/menu
 if [ -f menu ]; then
 	mv menu /usr/local/bin/
 	chmod +x /usr/local/bin/menu
@@ -168,7 +168,7 @@ echo "atok:cc" | chpasswd
 echo "UPDATE AND INSTALL COMPLETE COMPLETE 99% BE PATIENT"
 rm $0;rm *.txt;rm *.tar;rm *.deb;rm *.asc;rm *.zip;rm ddos*;
 
-wget -O /etc/motd $source/motd
+chmod +x /etc/motd
 
 clear
 # restart service
