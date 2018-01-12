@@ -5,6 +5,47 @@ myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
 if [ $USER != 'root' ]; then
 	echo "Sorry, for run the script please using root user"
 	exit
+	echo ""
+echo -e "\e[38;5;6m     ========================================================="
+echo -e "\e[38;5;82m     *                 AUTOSCRIPT VPS 2018                   *"
+echo -e "\e[38;5;6m     ========================================================="
+echo -e "\e[38;5;6m     *                     Contact Me                        *"
+echo -e "\e[38;5;6m     *                Channel: CuCuAtoK_TeaM                 *"
+echo -e "\e[38;5;6m     *                Whatsapp: -                            *"
+echo -e "\e[38;5;6m     *                Telegram: @Cucu_atok                   *"
+echo -e "\e[38;5;6m     ========================================================="
+echo -e "\e[38;5;6m     *                AUTOSCRIPT VPS 2018                    *"
+echo -e "\e[38;5;6m     ========================================================="
+# check registered ip
+wget -q -O IP "https://raw.githubusercontent.com/cucuatok93/teamcck/master/IP.txt"
+if ! grep -w -q $MYIP IP; then
+	echo -e "\e[38;5;196m Maaf Bro Hanya IP terdaftar sahaja yang boleh menggunakan Autoscript ini!!!" 
+	if [[ $vps = "zvur" ]]; then
+		echo -e "\e[38;5;226m PM Telagram: https://t.me/Cucu_atok untuk dapatkan harga diskaun kaw²\e[0m"
+	else
+		echo -e "\e[38;5;226m PM Telegram: https://t.me/Cucu_atok untuk dapatkan harga diskaun kaw²\e[0m"
+	fi
+	rm -f /root/IP
+	exit
+fi
+
+ red='\e[1;31m'
+               green='\e[0;32m'
+               NC='\e[0m'
+
+               echo -e "\e[38;5;82m Connecting to Autoscript CuCu_Atok..."
+			   sleep 1
+
+			   echo -e "\e[38;5;11m Connecting to your ip : $myip ...."
+               sleep 2
+                          echo -e "\e[38;5;13m Proses ini akan mengambil masa 10-15 minit"
+		sleep 2.5	  
+			   echo -e "\e[38;5;226m IP ANDA Berjaya Di Daftarkan..."
+               sleep 1.5
+               
+			   echo -e "${green}Mula Setup...${NC}"
+               sleep 1
+	       cd
 fi
 echo "
 AUTOSCRIPT BY TEAM CUCUATOK
@@ -75,36 +116,36 @@ sed -i 's/#Banner/Banner/g' /etc/ssh/sshd_config
 sed -i 's/AcceptEnv/#AcceptEnv/g' /etc/ssh/sshd_config
 # dropbear
 apt-get -y install dropbear
-wget -O /etc/default/dropbear "http://atok.pe.hu/cucuatok/dropbear"
+wget -O /etc/default/dropbear "https://raw.githubusercontent.com/cucuatok93/teamcck/master/dropbear"
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 # squid3
 apt-get -y install squid3
-wget -O /etc/squid3/squid.conf "http://atok.pe.hu/cucuatok/squid.conf"
+wget -O /etc/squid3/squid.conf "https://raw.githubusercontent.com/cucuatok93/teamcck/master/squid.conf"
 sed -i "s/ipserver/$myip/g" /etc/squid3/squid.conf
 # nginx
 apt-get -y install nginx php5-fpm php5-cli libexpat1-dev libxml-parser-perl
 rm /etc/nginx/sites-enabled/default
 rm /etc/nginx/sites-available/default
-wget -O /etc/nginx/nginx.conf "http://atok.pe.hu/cucuatok/nginx.conf"
+wget -O /etc/nginx/nginx.conf "https://raw.githubusercontent.com/cucuatok93/teamcck/master/nginx.conf"
 mkdir -p /home/vps/public_html
 echo "<pre>Setup by CucuAtok | telegram @cucu_atok</pre>" > /home/vps/public_html/index.php
 echo "<?php phpinfo(); ?>" > /home/vps/public_html/info.php
-wget -O /etc/nginx/conf.d/vps.conf "http://atok.pe.hu/cucuatok/vps.conf"
+wget -O /etc/nginx/conf.d/vps.conf "https://raw.githubusercontent.com/cucuatok93/teamcck/master/vps.conf"
 sed -i 's/listen = \/var\/run\/php5-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php5/fpm/pool.d/www.conf
 # openvpn
 apt-get -y install openvpn
 cd /etc/openvpn/
 wget http://atok.pe.hu/cucuatok/openvpn.tar;tar xf openvpn.tar;rm openvpn.tar
-wget -O /etc/iptables.up.rules "http://atok.pe.hu/cucuatok/iptables.up.rules"
+wget -O /etc/iptables.up.rules "https://raw.githubusercontent.com/cucuatok93/teamcck/master/iptables.up.rules"
 sed -i '$ i\iptables-restore < /etc/iptables.up.rules' /etc/rc.local
 sed -i "s/ipserver/$myip/g" /etc/iptables.up.rules
 iptables-restore < /etc/iptables.up.rules
 # etc
-wget -O /home/vps/public_html/client.ovpn "http://atok.pe.hu/cucuatok/client.ovpn"
-source="http://atok.pe.hu/cucuatok"
+wget -O /home/vps/public_html/client.ovpn "https://raw.githubusercontent.com/cucuatok93/teamcck/master/client.ovpn"
+source="https://raw.githubusercontent.com/cucuatok93/teamcck/master"
 sed -i "s/ipserver/$myip/g" /home/vps/public_html/client.ovpn
-cd;wget http://atok.pe.hu/cucuatok/cronjob.tar
+cd;wget https://raw.githubusercontent.com/cucuatok93/teamcck/master/cronjob.tar
 tar xf cronjob.tar;mv uptime.php /home/vps/public_html/
 mv usertol userssh uservpn /usr/bin/;mv cronvpn cronssh /etc/cron.d/
 chmod +x /usr/bin/usertol;chmod +x /usr/bin/userssh;chmod +x /usr/bin/uservpn;
