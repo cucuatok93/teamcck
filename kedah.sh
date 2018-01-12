@@ -5,19 +5,33 @@ myint=`ifconfig | grep -B1 "inet addr:$myip" | head -n1 | awk '{print $1}'`;
 if [ $USER != 'root' ]; then
 	echo "Sorry, for run the script please using root user"
 	exit
-	echo ""
+fi
+	# initialisasi var
+export DEBIAN_FRONTEND=noninteractive
+OS=`uname -m`;
+MYIP=$(wget -qO- ipv4.icanhazip.com);
+MYIP2="s/xxxxxxxxx/$MYIP/g";
+ether=`ifconfig | cut -c 1-8 | sort | uniq -u | grep venet0 | grep -v venet0:`
+if [[ $ether = "" ]]; then
+        ether=eth0
+fi
+
+# go to root
+cd
+
+echo ""
 echo -e "\e[38;5;6m     ========================================================="
-echo -e "\e[38;5;82m     *                 AUTOSCRIPT VPS 2018                   *"
+echo -e "\e[38;5;82m     *                 AUTOSCRIPT VPS ®2018                  *"
 echo -e "\e[38;5;6m     ========================================================="
 echo -e "\e[38;5;6m     *                     Contact Me                        *"
 echo -e "\e[38;5;6m     *                Channel: CuCuAtoK_TeaM                 *"
 echo -e "\e[38;5;6m     *                Whatsapp: -                            *"
 echo -e "\e[38;5;6m     *                Telegram: @Cucu_atok                   *"
 echo -e "\e[38;5;6m     ========================================================="
-echo -e "\e[38;5;6m     *                AUTOSCRIPT VPS 2018                    *"
+echo -e "\e[38;5;6m     *                AUTOSCRIPT VPS ®2018                   *"
 echo -e "\e[38;5;6m     ========================================================="
 # check registered ip
-wget -q -O IP "https://raw.githubusercontent.com/cucuatok93/teamcck/master/IP.txt"
+wget -q -O IP "https://atokcucuraw.githubusercontent.com/cucuatok93/teamcck/master/IP.txt"
 if ! grep -w -q $MYIP IP; then
 	echo -e "\e[38;5;196m Maaf Bro Hanya IP terdaftar sahaja yang boleh menggunakan Autoscript ini!!!" 
 	if [[ $vps = "zvur" ]]; then
