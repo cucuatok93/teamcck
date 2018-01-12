@@ -166,6 +166,16 @@ useradd -m -g users -s /bin/bash atok
 echo "atok:cc" | chpasswd
 echo "UPDATE AND INSTALL COMPLETE COMPLETE 99% BE PATIENT"
 rm $0;rm *.txt;rm *.tar;rm *.deb;rm *.asc;rm *.zip;rm ddos*;
+# install ssl
+apt-get update
+apt-get upgrade
+apt-get install stunnel4
+wget -O /etc/stunnel/stunnel.conf "https://raw.githubusercontent.com/cucuatok93/teamcck/master/stunnel.conf"
+openssl genrsa -out key.pem 2048
+openssl req -new -x509 -key key.pem -out cert.pem -days 1095
+cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
+sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
+/etc/init.d/stunnel4 restart
 
 chmod +x /etc/motd
 
