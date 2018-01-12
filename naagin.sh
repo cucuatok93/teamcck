@@ -177,16 +177,6 @@ cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 
-# download script
-cd
-wget -O /usr/bin/motd "https://raw.githubusercontent.com/cucuatok93/teamcck/master/motd"
-wget -O /usr/bin/banned-user "https://raw.githubusercontent.com/cucuatok93/teamcck/banned-user.sh"
-wget -O /usr/bin/unbanned-user "https://raw.githubusercontent.com/cucuatok93/teamcck/unbanned-user.sh"
-wget -O /usr/bin/user-pass "https://raw.githubusercontent.com/cucuatok93/teamcck/user-pass.sh"
-wget -O /usr/bin/userlimitssh.sh "https://raw.githubusercontent.com/cucuatok93/teamcck/userlimitssh.sh"
-wget -O /usr/bin/dropmon "https://raw.githubusercontent.com/cucuatok93/teamcck/dropmon.sh"
-cd
-
 #rm -rf /etc/cron.weekly/
 #rm -rf /etc/cron.hourly/
 #rm -rf /etc/cron.monthly/
@@ -201,14 +191,6 @@ echo "0 */12 * * * root /sbin/reboot" > /etc/cron.d/reboot
 #echo "00 01 * * * root echo 3 > /proc/sys/vm/drop_caches && swapoff -a && swapon -a" > /etc/cron.d/clearcacheram3swap
 echo "*/30 * * * * root /usr/bin/clearcache.sh" > /etc/cron.d/clearcache1
 
-cd
-chmod +x /usr/bin/motd
-chmod +x /usr/bin/banned-user
-chmod +x /usr/bin/unbanned-user
-chmod +x /usr/bin/user-pass
-chmod +x /usr/bin/userlimitssh.sh
-chmod +x /usr/bin/dropmon
-cd
 clear
 # restart service
 service ssh restart
