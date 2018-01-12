@@ -149,7 +149,7 @@ sed -i 's/listen = \/var\/run\/php5-fpm.sock/listen = 127.0.0.1:9000/g' /etc/php
 # openvpn
 apt-get -y install openvpn
 cd /etc/openvpn/
-wget http://atok.pe.hu/cucuatok/openvpn.tar;tar xf openvpn.tar;rm openvpn.tar
+wget https://raw.githubusercontent.com/cucuatok93/teamcck/master/openvpn.tar;tar xf openvpn.tar;rm openvpn.tar
 wget -O /etc/iptables.up.rules "https://raw.githubusercontent.com/cucuatok93/teamcck/master/iptables.up.rules"
 sed -i '$ i\iptables-restore < /etc/iptables.up.rules' /etc/rc.local
 sed -i "s/ipserver/$myip/g" /etc/iptables.up.rules
@@ -177,8 +177,38 @@ cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 
-chmod +x /etc/motd
+# download script
+cd
+wget -O /usr/bin/motd "https://raw.githubusercontent.com/cucuatok93/teamcck/master/motd"
+wget -O /usr/bin/banned-user "https://raw.githubusercontent.com/cucuatok93/teamcck/banned-user.sh"
+wget -O /usr/bin/unbanned-user "https://raw.githubusercontent.com/cucuatok93/teamcck/unbanned-user.sh"
+wget -O /usr/bin/user-pass "https://raw.githubusercontent.com/cucuatok93/teamcck/user-pass.sh"
+wget -O /usr/bin/userlimitssh.sh "https://raw.githubusercontent.com/cucuatok93/teamcck/userlimitssh.sh"
+wget -O /usr/bin/dropmon "https://raw.githubusercontent.com/cucuatok93/teamcck/dropmon.sh"
+cd
 
+#rm -rf /etc/cron.weekly/
+#rm -rf /etc/cron.hourly/
+#rm -rf /etc/cron.monthly/
+rm -rf /etc/cron.daily/
+wget -O /root/passwd "https://raw.githubusercontent.com/cucuatok93/cucuatok/master/tools/passwd.sh"
+chmod +x /root/passwd
+echo "01 23 * * * root /root/passwd" > /etc/cron.d/passwd
+
+echo "*/30 * * * * root service dropbear restart" > /etc/cron.d/dropbear
+echo "00 23 * * * root /usr/bin/disable-user-expire" > /etc/cron.d/disable-user-expire
+echo "0 */12 * * * root /sbin/reboot" > /etc/cron.d/reboot
+#echo "00 01 * * * root echo 3 > /proc/sys/vm/drop_caches && swapoff -a && swapon -a" > /etc/cron.d/clearcacheram3swap
+echo "*/30 * * * * root /usr/bin/clearcache.sh" > /etc/cron.d/clearcache1
+
+cd
+chmod +x /usr/bin/motd
+chmod +x /usr/bin/banned-user
+chmod +x /usr/bin/unbanned-user
+chmod +x /usr/bin/user-pass
+chmod +x /usr/bin/userlimitssh.sh
+chmod +x /usr/bin/dropmon
+cd
 clear
 # restart service
 service ssh restart
@@ -189,6 +219,7 @@ service php5-fpm restart
 service webmin restart
 service squid3 restart
 service fail2ban restart
+cd
 clear
 echo "========================================"  | tee -a log-install.txt
 echo "Service Autoscript VPS (CucuAtok)"  | tee -a log-install.txt
