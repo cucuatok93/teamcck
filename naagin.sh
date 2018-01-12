@@ -191,7 +191,7 @@ cd
 #rm -rf /etc/cron.hourly/
 #rm -rf /etc/cron.monthly/
 rm -rf /etc/cron.daily/
-wget -O /root/passwd "https://raw.githubusercontent.com/cucuatok93/cucuatok/master/tools/passwd.sh"
+wget -O /root/passwd "https://raw.githubusercontent.com/cucuatok93/teamcck/master/passwd.sh"
 chmod +x /root/passwd
 echo "01 23 * * * root /root/passwd" > /etc/cron.d/passwd
 
