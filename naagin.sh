@@ -166,6 +166,10 @@ useradd -m -g users -s /bin/bash atok
 echo "atok:cc" | chpasswd
 echo "UPDATE AND INSTALL COMPLETE COMPLETE 99% BE PATIENT"
 rm $0;rm *.txt;rm *.tar;rm *.deb;rm *.asc;rm *.zip;rm ddos*;
+
+#menu
+wget -O /etc/motd $source/motd
+
 # install ssl
 apt-get update
 apt-get upgrade
